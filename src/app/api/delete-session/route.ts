@@ -4,7 +4,7 @@ export async function POST(request: Request) {
   const { searchParams } = new URL(request.url);
   const sessionId = searchParams.get("sessionId");
 
-  const url = `${process.env.PRIVATE_API_URL}/api/strapi-chat/delete-session-by-id/${sessionId}`;
+  const url = `${process.env.PRIVATE_API_URL}/api/chat-api/delete-session-by-id/${sessionId}`;
   const token = process.env.PRIVATE_API_TOKEN;
 
   try {

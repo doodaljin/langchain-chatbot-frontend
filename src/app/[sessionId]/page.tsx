@@ -37,7 +37,7 @@ export default function ChatRoute({
   }, []);
 
   if (!data) return <div>No chat data!</div>;
-
+  console.log("debug")
   return (
     <div className="relative h-screen flex flex-col p-4">
       <h1 className="text-slate-300">
@@ -51,9 +51,9 @@ export default function ChatRoute({
             return (
               <div key={index} className="shadow-lg my-4">
                 <header className="text-slate-300 font-bold bg-slate-800 py-2 px-4 mb-2 rounded-md">
-                  {message.type}
+                  {message.id[2] === "HumanMessage" ? "Human" : "Chatbot"}
                 </header>
-                <p className="text-slate-400 px-4">{message.data.content}</p>
+                <p className="text-slate-400 px-4">{message.kwargs.content}</p>
               </div>
             );
           })}
