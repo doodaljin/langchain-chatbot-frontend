@@ -4,7 +4,7 @@ import { apiRequest } from "../utils/api-functions";
 import { url } from "inspector";
 import Image from "next/image";
 import profilePic from '../../../Pics/images.jpg'
-import profilePic2 from '../../../Pics/images.png'
+import profilePic2 from '../../../Pics/images2.jpg'
 
 export default function ChatRoute({
   params,
@@ -42,7 +42,7 @@ export default function ChatRoute({
   if (!data) return <div>No chat data!</div>;
   console.log("debug")
   return (
-    <div className="relative h-screen flex flex-col p-4 bg-[#6c757d]">
+    <div className="relative h-screen flex flex-col p-4">
       <h1 className="text-slate-300 text-white font-bold">
         Chat Session: <span className="text-slate-400  text-black">{data.sessionId}</span>
       </h1>
@@ -52,8 +52,8 @@ export default function ChatRoute({
           {data.history?.map((message: any, index: any) => {
             if (index === 0) return null;
             return (
-              <div key={index} className="shadow-lg my-4 flex">
-                {message.id[2] === "HumanMessage" ? <div className="flex flex-row-reverse justify-start w-full"> <header className="py-2 px-4 mb-2 rounded-md flex flex-row-reverse justify-end w-20"> <Image className="rounded-full w-10 items-center flex" src={profilePic} alt=""></Image> </header> <p className="text-slate-400 px-4 items-center flex justify-end bg-white rounded-lg text-black">{message.kwargs.content}</p> </div> : <div className="flex w-full"><header className="py-2 px-4 mb-2 rounded-md justify-end w-20 "> <Image className="rounded-full w-10 items-center flex" src={profilePic2} alt=""></Image> </header> <p className="text-slate-400 px-4 items-center flex bg-white rounded-lg text-black w-fit">{message.kwargs.content}</p> </div>}
+              <div key={index} className="my-4 flex">
+                {message.id[2] === "HumanMessage" ? <div className="flex flex-row-reverse justify-start w-full"> <header className="py-2 px-4 mb-2 rounded-md flex flex-row-reverse justify-end w-20"> <Image className="rounded-full w-10 items-center flex" src={profilePic} alt=""></Image> </header> <p className="text-slate-400 px-4 items-center flex justify-end bg-[#48cae4] rounded-lg text-white">{message.kwargs.content}</p> </div> : <div className="flex w-full"><header className="py-2 px-4 mb-2 rounded-md justify-end w-20 "> <Image className="rounded-full w-10 items-center flex" src={profilePic2} alt=""></Image> </header> <p className="text-slate-400 px-4 items-center flex bg-[#E4E6EB] rounded-lg text-black w-fit">{message.kwargs.content}</p> </div>}
               </div>
             );
           })}
@@ -72,7 +72,7 @@ export default function ChatRoute({
           />
           <button
             type="submit"
-            className="bg-slate-800 text-slate-300 rounded-md p-2 w-24 bg-[#212529]"
+            className="bg-slate-800 text-slate-300 text-white rounded-md p-2 w-24 bg-[#212529]"
             disabled={loading}
           >
             {loading ? "Sending..." : "Send"}
