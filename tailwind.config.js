@@ -20,7 +20,7 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       'white': '#ffffff',
-      
+      'black': '#0a0a0a',
     }
   },
   plugins: [],
