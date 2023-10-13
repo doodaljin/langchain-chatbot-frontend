@@ -53,7 +53,14 @@ export default function ChatRoute({
             if (index === 0) return null;
             return (
               <div key={index} className="my-4 flex">
-                {message.id[2] === "HumanMessage" ? <div className="flex flex-row-reverse justify-start w-full"> <header className="py-2 px-4 mb-2 rounded-md flex flex-row-reverse justify-end w-20"> <Image className="rounded-full w-10 items-center flex" src={profilePic} alt=""></Image> </header> <p className="text-slate-400 px-4 items-center flex justify-end bg-[#48cae4] rounded-lg text-white">{message.kwargs.content}</p> </div> : <div className="flex w-full"><header className="py-2 px-4 mb-2 rounded-md justify-end w-20 "> <Image className="rounded-full w-10 items-center flex" src={profilePic2} alt=""></Image> </header> <p className="text-slate-400 px-4 items-center flex bg-[#E4E6EB] rounded-lg text-black w-fit">{message.kwargs.content}</p> </div>}
+                {
+                (message.id[2] === "HumanMessage") ? 
+                  <div className="flex flex-row-reverse justify-start w-full"> <header className="py-2 px-4 mb-2 rounded-md flex flex-row-reverse justify-end w-20"> <Image className="rounded-full w-10 items-center flex" src={profilePic} alt=""></Image> </header> <p className="text-slate-400 px-4 items-center flex justify-end bg-[#48cae4] rounded-lg text-white">{message.kwargs.content}</p> </div> : 
+                  (message.kwargs.content.includes("oaidall") === true) ? 
+                    <div className="flex w-full"><header className="py-2 px-4 mb-2 rounded-md justify-end w-20 "> <Image className="rounded-full w-10 items-center flex" src={profilePic2} alt=""></Image> </header> <p className="text-slate-400 px-4 items-center flex bg-[#E4E6EB] rounded-lg text-black w-fit"><Image src={message.kwargs.content.split("(", 2)[1].split(")", -1)} alt={message.kwargs.content}/></p></div> : 
+                    <div className="flex w-full"><header className="py-2 px-4 mb-2 rounded-md justify-end w-20 "> <Image className="rounded-full w-10 items-center flex" src={profilePic2} alt=""></Image> </header> <p className="text-slate-400 px-4 items-center flex bg-[#E4E6EB] rounded-lg text-black w-fit">{message.kwargs.content}</p></div>
+                }
+                {/*  */}
               </div>
             );
           })}
